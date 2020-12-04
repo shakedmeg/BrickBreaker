@@ -2,12 +2,13 @@ Ball = Circle:extend()
 
 
 function Ball:new(margin)
-	Ball.super.new(self, gw*0.5, gh*0.925, gh*0.025)
+	Ball.super.new(self, Level.mainCanvasSize.x*0.5, Level.mainCanvasSize.y*0.925, Level.mainCanvasSize.y*0.025)
 	self.margin = margin
 	self.speed = 800
 	self.state = IdleState(self)
 	self.xDir = math.cos(270)
 	self.yDir = math.sin(270)
+	self.image = Image("Images/Ball.png", self.x, self.y, self.r*2, self.r*2)
 end
 
 
@@ -16,7 +17,7 @@ function Ball:update(dt, level)
 end
 
 function Ball:draw()
-	Ball.super.draw(self)
+	love.graphics.draw(self.image.image, self.x, self.y, 0 , self.image.sx, self.image.sy, self.image.ox, self.image.oy) 
 end
 
 -- return 8 points that will be used to test collisions, points are:
@@ -53,8 +54,8 @@ end
 
 
 function Ball:respawn()
-	self.x = gw*0.5
-	self.y = gh*0.925
+	self.x = Level.mainCanvasSize.x * 0.5
+	self.y = Level.mainCanvasSize.y * 0.925
 	self.state = IdleState(self)
 	self.xDir = math.cos(270)
 	self.yDir = math.sin(270)

@@ -28,7 +28,7 @@ function CollisionManager:handleBallToWall()
         self.level.ball:flipYDir()
     end
 
-    if self.level.ball.y + self.level.ball.r >= gh then
+    if self.level.ball.y + self.level.ball.r >= Level.mainCanvasSize.y then
         self.level:die()
     end
 end
@@ -48,7 +48,7 @@ end
 
 -- destroys a projectile if it touched the buttom of the window
 function CollisionManager:handleProjectileToWall(projectile)
-    if projectile:getSecondY() >= gh then
+    if projectile:getSecondY() >= Level.mainCanvasSize.y then
         table.remove(self.level.shootingManager.projectiles, 1)
         return true
     end
@@ -75,7 +75,7 @@ end
 -- checks if the ball touched one of the paddle's circles or it's rectangle, if so the game will die
 function CollisionManager:handleBallToPaddle()
     if self.level.ball.x < self.level.paddle.c1.x then
-        if distance(self.level.paddle, self.level.ball) <= self.level.paddle.r + self.level.ball.r then
+        if distance(self.level.paddle.c1, self.level.ball) <= self.level.paddle.r + self.level.ball.r then
             self.level.ball:flipYDir()
         end
     elseif self.level.ball.x > self.level.paddle.c2.x then
@@ -142,8 +142,9 @@ function CollisionManager:checkCollisions(ballPoints, keys)
                 local collision, checkFlipY, checkFlipX = self:circleRectCollision(block, self.level.ball)
                 if collision then
                     self.level:removeBlock(key)
-                    self.level:escelate()
+                    self.level:escalate()
                     flipX, flipY = self:checkFlips(flipX, filpY, checkFlipX, checkFlipY)
+                    if flipX or flipY then break end
                 end
             end
         end

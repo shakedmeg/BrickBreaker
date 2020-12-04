@@ -12,6 +12,10 @@ function love.load(...)
 	resize(width/gw, height/gh)
 
 
+	local scene_files = {}
+    recursiveEnumerate('Scenes', scene_files)
+    requireFiles(scene_files)
+
     local object_files = {}
     recursiveEnumerate('Objects', object_files)
     requireFiles(object_files)
@@ -19,13 +23,11 @@ function love.load(...)
     local object_files = {}
     recursiveEnumerate('Managers', object_files)
     requireFiles(object_files)
-
-	local scene_files = {}
-    recursiveEnumerate('Scenes', scene_files)
-    requireFiles(scene_files)
     timer = Timer()
     current_scene = nil
-	gotoScene('Level1', 3)
+
+    love.graphics.setNewFont(40)
+	gotoScene('MainPanel')
 end
 
 

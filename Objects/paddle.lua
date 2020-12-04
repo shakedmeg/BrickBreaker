@@ -2,15 +2,16 @@ Paddle = GameObject:extend()
 
 -- the paddle is consturcted from two circles and a rectangle the only moves horizontally on the screen
 function Paddle:new()
-	Paddle.super.new(self, gw*0.5, gh*0.975)
-	local w = gw*0.1
-	local h = gh*0.025
+	Paddle.super.new(self, Level.mainCanvasSize.x * 0.5, Level.mainCanvasSize.y * 0.975)
+	local w = Level.mainCanvasSize.x*0.1
+	local h = Level.mainCanvasSize.y*0.05
 	self.rect = Rectangle(self.x - w/2, self.y - h/2, w, h)
 
 	self.r = self.rect.height/2
 	self.c1 = Circle(self.rect.x, self.rect.y + self.rect.height/2, self.r)
 	self.c2 = Circle(self.rect.x + self.rect.width, self.rect.y + self.rect.height/2, self.r)
 	self.speed = 800
+	self.image = Image("Images/Paddle.png", self.x, self.y, w + self.r*2, h)
 
 end
 
@@ -28,15 +29,16 @@ function Paddle:update(dt)
 end
 
 function Paddle:draw()
-	love.graphics.print("mouse " .. love.mouse.getX() .. " paddle x " .. self.x, 0, 0, 0 ,5, 5, 0, 0)
 	self.rect.draw(self.rect)
 	self.c1.draw(self.c1)
 	self.c2.draw(self.c2)
+	love.graphics.draw(self.image.image, self.x, self.y, 0 , self.image.sx, self.image.sy, self.image.ox, self.image.oy) 
+
 end
 
 function Paddle:respawn()
-	self.x = gw*0.5
-	self.y = gh*0.975
+	self.x = Level.mainCanvasSize.x * 0.5
+	self.y = Level.mainCanvasSize.y * 0.975
 	self.rect.x = self.x - self.rect.width/2
 	self.rect.y = self.y - self.rect.height/2
 
