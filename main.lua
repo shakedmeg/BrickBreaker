@@ -6,6 +6,7 @@ require 'Circle'
 require 'Rectangle'
 require 'utils'
 
+-- Adjust screen size and load all games files also loads the first scene
 function love.load(...)
 	local width, height = love.graphics.getDimensions()
 	resize(width/gw, height/gh)
@@ -42,7 +43,7 @@ function gotoScene(scene_type, ...)
     current_scene = _G[scene_type](...)
 end
 
-
+-- recursivly iterates over all sub folders in a given path and loads all the files
 function recursiveEnumerate(folder, file_list)
     local items = love.filesystem.getDirectoryItems(folder)
     for _, item in ipairs(items) do
@@ -56,6 +57,7 @@ function recursiveEnumerate(folder, file_list)
     end
 end
 
+-- loads a file
 function requireFiles(files)
     for _, file in ipairs(files) do
         local file = file:sub(1, -5)
@@ -69,7 +71,10 @@ function resize(sw, sh)
 end
 
 
-
+-- Overriding the default way run is implemeted.
+-- Now after getting the dt between two frames, the method will add it to an accumulator. While this accumulator is larger than
+-- the fixed_dt the method will continue to call updates (stimulating physics steps) and decrease the accumulator by the fixed_dt.
+-- The remanider of the accumulator will be held for the next iteration. This is based on this article https://gafferongames.com/post/fix_your_timestep/
 function love.run()
     if love.math then love.math.setRandomSeed(os.time()) end
     if love.load then love.load(arg) end
