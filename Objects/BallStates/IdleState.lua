@@ -6,10 +6,11 @@ end
 
 -- if the mouse had been clicked the state will be transitioned to moving state thus launching the ball
 function IdleState:handleInput()
-	if love.mouse.isDown(1) then
+	if input:pressed('click') then
 		self.ball.state = MovingState()
 	end
 end
+
 
 -- moves the ball according to the paddle
 function IdleState:update(dt)

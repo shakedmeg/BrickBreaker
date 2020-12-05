@@ -1,5 +1,6 @@
 Object = require 'Lib/oop'
 Timer = require 'Lib/EnhancedTimer'
+Input = require 'Lib/Input'
 
 require 'GameObject'
 require 'Circle'
@@ -23,10 +24,13 @@ function love.load(...)
     local object_files = {}
     recursiveEnumerate('Managers', object_files)
     requireFiles(object_files)
+    
+    input = Input()
+    input:bind('mouse1', 'click')
+
     timer = Timer()
     current_scene = nil
 
-    love.graphics.setNewFont(40)
 	gotoScene('MainPanel')
 end
 

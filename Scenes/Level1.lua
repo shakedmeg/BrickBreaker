@@ -37,5 +37,5 @@ function Level1:draw()
 end
 
 function Level1:switchLevel()
-    timer:after(1, function() gotoScene("Level2", self.lives) end)
+    gotoScene("Level2", self.lives)
 end

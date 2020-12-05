@@ -37,7 +37,7 @@ end
 
 function Level:update(dt)
     if self.dead then return end
-    self.ball.state:handleInput(self.ball)
+    self.ball.state:handleInput()
 
     self.paddle:update(dt)
     self.ball:update(dt, self)
@@ -113,7 +113,7 @@ function Level:die()
     self.shootingManager.projectiles = {}
     timer:cancel(self.shootingManager.shootingTimer)
     if self.lives == 0 then
-        gotoScene("MainPanel", "You Lost\n Play Again?")
+        gotoScene("MainPanel", "You Lost\n Play Again?", 2)
     else
         timer:after(1, function() self:respawn() end)
     end

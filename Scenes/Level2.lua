@@ -34,5 +34,5 @@ function Level2:draw()
 end
 
 function Level2:switchLevel()
-    timer:after(1, function() gotoScene("MainPanel", "You Won!\nPlay Again?\n(Or Hire Me ;)") end)
+    gotoScene("MainPanel", "You Won!\nPlay Again?\n( Or Hire Me ;) )", 3)
 end

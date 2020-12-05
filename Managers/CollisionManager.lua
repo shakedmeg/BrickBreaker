@@ -77,10 +77,12 @@ function CollisionManager:handleBallToPaddle()
     if self.level.ball.x < self.level.paddle.c1.x then
         if distance(self.level.paddle.c1, self.level.ball) <= self.level.paddle.r + self.level.ball.r then
             self.level.ball:flipYDir()
+            self.level.ball:flipXDir()
         end
     elseif self.level.ball.x > self.level.paddle.c2.x then
         if distance(self.level.paddle.c2, self.level.ball) <= self.level.paddle.r + self.level.ball.r then
             self.level.ball:flipYDir()
+            self.level.ball:flipXDir()
         end
     elseif self.level.ball.x > self.level.paddle.c1.x and self.level.ball.x < self.level.paddle.c2.x then
         if self.level.paddle.rect.y - self.level.ball.y <= self.level.ball.r then
