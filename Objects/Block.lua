@@ -1,3 +1,5 @@
+require 'Objects/Rectangle'
+
 Block = Rectangle:extend()
 Block.width = Level.mainCanvasSize.x*0.1
 Block.height = Level.mainCanvasSize.y*0.05

@@ -1,3 +1,5 @@
+require 'Objects/GameObject'
+
 Rectangle = GameObject:extend()
 
 function Rectangle:new(x, y, w, h)
@@ -6,9 +8,6 @@ function Rectangle:new(x, y, w, h)
 	self.height = h
 end
 
-function Rectangle:draw()
-	love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
-end
 
 function Rectangle:getSecondX()
 	return self.x + self.width

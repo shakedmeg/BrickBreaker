@@ -1,3 +1,5 @@
+require 'Objects/GameObject'
+
 Circle = GameObject:extend()
 
 
@@ -6,6 +8,3 @@ function Circle:new(x, y, r)
 	self.r = r
 end
 
-function Circle:draw()
-	love.graphics.circle("fill", self.x, self.y, self.r)
-end

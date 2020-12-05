@@ -1,4 +1,6 @@
-Level = Object:extend();
+require 'Scenes/Scene'
+
+Level = Scene:extend();
 
 Level.mainCanvasSize = {["x"] = gw, ["y"] = gh*0.9}
 Level.lifeCanvasSize = {["x"] = gw, ["y"] = gh*0.1}
@@ -21,7 +23,7 @@ function Level:new(lives, blocksZone, gapX, gapY)
     self:initHearts(lives)
 end
 
-
+-- init heart images to the player
 function Level:initHearts(lives)
     self.lives = lives
     self.heartImages = {}
@@ -163,4 +165,8 @@ function Level:escalate()
         timer:cancel(self.shootingManager.shootingTimer)
         self:switchLevel()
     end
+end
+
+
+function Level:switchLevel()
 end

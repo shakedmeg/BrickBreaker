@@ -1,3 +1,5 @@
+require 'Objects/Rectangle'
+
 Projectile = Rectangle:extend()
 
 

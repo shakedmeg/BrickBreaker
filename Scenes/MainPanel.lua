@@ -1,4 +1,6 @@
-MainPanel = Object:extend();
+require 'Scenes/Scene'
+
+MainPanel = Scene:extend();
 
 function MainPanel:new(text, lines)
     self.text = text or "Start"

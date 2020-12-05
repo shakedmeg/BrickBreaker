@@ -1,3 +1,6 @@
+require 'Objects/Circle'
+require 'Objects/Rectangle'
+
 Paddle = GameObject:extend()
 
 -- the paddle is consturcted from two circles and a rectangle the only moves horizontally on the screen
@@ -29,11 +32,7 @@ function Paddle:update(dt)
 end
 
 function Paddle:draw()
-	self.rect.draw(self.rect)
-	self.c1.draw(self.c1)
-	self.c2.draw(self.c2)
 	love.graphics.draw(self.image.image, self.x, self.y, 0 , self.image.sx, self.image.sy, self.image.ox, self.image.oy) 
-
 end
 
 function Paddle:respawn()

@@ -1,10 +1,7 @@
 Object = require 'Lib/Oop'
-Timer = require 'Lib/EnhancedTimer'
+Timer = require 'Lib/Timer'
 Input = require 'Lib/Input'
 
-require 'GameObject'
-require 'Circle'
-require 'Rectangle'
 
 -- Adjust screen size and load all games files also loads the first scene
 function love.load(...)

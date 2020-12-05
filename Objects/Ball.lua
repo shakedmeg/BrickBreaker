@@ -1,3 +1,5 @@
+require 'Objects/Circle'
+
 Ball = Circle:extend()
 
 
