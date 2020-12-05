@@ -15,9 +15,11 @@ In order to run the game do the following:
 ## Design Layout
 ![Brick Breaker](https://github.com/shakedmeg/BrickBreaker/blob/master/ReadMeImages/designLayout.png?raw=true)
 ### Description
-#### Collisions
 Upon running Main the game will load all scenes, and objects. It will initiate the MainPanel Scene and will wait for the player's Input (clicking on the Start Button).
-Main's gotoScene is a quick way to delete the current scene and initiate a new one.  
+Main's gotoScene is a quick way to delete the current scene and initiate a new one.
+Once switched to a Level scene, the level will initiate a "blocksZone" which is a rectangle that its x and y bounds cover all of the game's block.  
+Each level initializes its blocks in a 2D array under the variable blocks.  
+#### Collisions  
 Once switched to a Level scene, the level will initiate a "blocksZone" which is a rectangle that its x and y bounds cover all of the game's block.  
 Each level initializes its blocks in a 2D array under the variable blocks.  
 Every update the level's collision manager will check if a part of the ball is in the blocksZone, if it will look for collisions between the ball and the blocks.  
