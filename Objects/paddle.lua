@@ -13,7 +13,7 @@ function Paddle:new()
 	self.r = self.rect.height/2
 	self.c1 = Circle(self.rect.x, self.rect.y + self.rect.height/2, self.r)
 	self.c2 = Circle(self.rect.x + self.rect.width, self.rect.y + self.rect.height/2, self.r)
-	self.speed = 800
+	self.speed = 400
 	self.image = Image("Images/Paddle.png", self.x, self.y, w + self.r*2, h)
 
 end

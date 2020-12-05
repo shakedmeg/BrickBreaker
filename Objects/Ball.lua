@@ -2,14 +2,16 @@ require 'Objects/Circle'
 
 Ball = Circle:extend()
 
+Ball.xDir = math.cos(math.rad(15))
+Ball.yDir = math.sin(math.rad(15))
 
 function Ball:new(margin)
 	Ball.super.new(self, Level.mainCanvasSize.x*0.5, Level.mainCanvasSize.y*0.925, Level.mainCanvasSize.y*0.025)
 	self.margin = margin
-	self.speed = 800
+	self.speed = 400
 	self.state = IdleState(self)
-	self.xDir = math.cos(270)
-	self.yDir = math.sin(270)
+	self.xDir = Ball.xDir
+	self.yDir = Ball.yDir
 	self.image = Image("Images/Ball.png", self.x, self.y, self.r*2, self.r*2)
 end
 
@@ -59,6 +61,6 @@ function Ball:respawn()
 	self.x = Level.mainCanvasSize.x * 0.5
 	self.y = Level.mainCanvasSize.y * 0.925
 	self.state = IdleState(self)
-	self.xDir = math.cos(270)
-	self.yDir = math.sin(270)
+	self.xDir = Ball.xDir
+	self.yDir = Ball.yDir
 end
